@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Partner with Updraft Studios</title>
+<meta name="description" content="Tell us about your brand and your goals. Updraft Studios replies with real, specific next steps within a day or two.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy-deep: #0F1A45;
+    --navy: #1B2A6B;
+    --blue: #2B7FE0;
+    --sky: #4FB3FF;
+    --teal: #3FD9C6;
+    --violet: #8B7CF6;
+    --ink: #14161C;
+    --ink-soft: #4A4E5A;
+    --paper: #FFFFFF;
+    --paper-soft: #F7F8FA;
+    --line: rgba(20,22,30,0.08);
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --nav-logo-h: 52px;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--paper);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 { font-family: 'Sora', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; text-wrap: balance; }
+  p { text-wrap: pretty; }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+
+  /* ===== NAV ===== */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: #ffffff;
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    backdrop-filter: blur(16px) saturate(160%);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    max-width: 1180px; margin: 0 auto; padding: 18px 24px;
+    display: flex; align-items: center; gap: 28px;
+  }
+  .brand { display: flex; align-items: center; gap: 10px; }
+  .brand #logoImg { height: var(--nav-logo-h, 48px); width: auto; }
+  .nav-links { display: flex; gap: 32px; font-size: 14.5px; font-weight: 500; color: var(--ink); margin-left: auto; }
+  .nav-links a { position: relative; padding: 4px 0; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--blue); }
+  .nav-cta {
+    background: var(--navy); color: #fff; padding: 10px 20px; border-radius: 999px;
+    font-size: 14px; font-weight: 600;
+    transition: background 0.2s ease, transform 0.15s ease;
+  }
+  .nav-cta:hover { background: var(--blue); transform: translateY(-1px); }
+  .nav-toggle { display: none; flex-direction: column; gap: 4px; background: none; border: none; cursor: pointer; padding: 6px; margin-left: auto; }
+  .nav-toggle span { width: 22px; height: 2px; background: var(--navy); border-radius: 2px; transition: transform 0.25s ease, opacity 0.25s ease; }
+  .mobile-menu {
+    position: fixed; inset: 0; background: rgba(255,255,255,0.98);
+    -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px);
+    z-index: 99; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 28px; font-size: 22px; font-weight: 600; color: var(--navy);
+    opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+  }
+  .mobile-menu.open { opacity: 1; pointer-events: auto; }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative; overflow: hidden;
+    padding: 160px 24px 90px;
+    background:
+      radial-gradient(ellipse 900px 600px at 12% 18%, rgba(63,217,198,0.12) 0%, rgba(63,217,198,0) 60%),
+      radial-gradient(ellipse 900px 700px at 88% 82%, rgba(43,127,224,0.12) 0%, rgba(43,127,224,0) 60%),
+      var(--paper);
+  }
+  .hero-orb { position: absolute; border-radius: 50%; filter: blur(52px); opacity: 0.55; will-change: transform; }
+  .hero-orb-1 { width: 460px; height: 460px; background: radial-gradient(circle, var(--sky) 0%, rgba(79,179,255,0) 70%); top: -120px; left: -150px; animation: floatSlow 16s ease-in-out infinite; }
+  .hero-orb-2 { width: 400px; height: 400px; background: radial-gradient(circle, var(--teal) 0%, rgba(63,217,198,0) 70%); bottom: -110px; right: -120px; animation: floatSlow 20s ease-in-out infinite reverse; }
+  .hero-orb-3 { width: 340px; height: 340px; background: radial-gradient(circle, var(--violet) 0%, rgba(139,124,246,0) 70%); top: 12%; right: 26%; animation: floatSlow 24s ease-in-out infinite; }
+  @keyframes floatSlow { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(30px,-24px) scale(1.06); } }
+
+  .wing-mark {
+    position: absolute; right: -90px; top: 40px; width: 520px; opacity: 0.05;
+    pointer-events: none; user-select: none;
+  }
+
+  .hero-grid {
+    position: relative; z-index: 2;
+    max-width: 1180px; margin: 0 auto; padding: 0 24px;
+    display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 60px; align-items: center;
+  }
+
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 9px;
+    font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--blue); background: rgba(43,127,224,0.08);
+    padding: 7px 16px; border-radius: 999px; margin-bottom: 26px;
+  }
+  .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 0 0 rgba(63,217,198,0.55); animation: pulse 2.4s ease-out infinite; }
+  @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(63,217,198,0.55); } 70% { box-shadow: 0 0 0 10px rgba(63,217,198,0); } 100% { box-shadow: 0 0 0 0 rgba(63,217,198,0); } }
+
+  .hero h1 { font-size: clamp(38px, 6.4vw, 68px); line-height: 1.04; font-weight: 800; letter-spacing: -0.02em; margin: 0 0 22px; color: var(--navy-deep); }
+  .hero h1 .accent {
+    background: linear-gradient(100deg, var(--blue), var(--teal));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .lede { font-size: 18px; line-height: 1.65; color: var(--ink-soft); margin: 0 0 28px; max-width: 520px; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 40px; }
+  .chip {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 13.5px; font-weight: 500; color: var(--navy);
+    background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 8px 15px;
+    box-shadow: 0 1px 4px rgba(20,30,60,0.04);
+  }
+  .chip i { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+  .chip i.c1 { background: var(--blue); }
+  .chip i.c2 { background: var(--sky); }
+  .chip i.c3 { background: var(--teal); }
+  .chip i.c4 { background: var(--violet); }
+  .chip i.c5 { background: var(--navy); }
+
+  .steps { display: flex; flex-direction: column; gap: 18px; }
+  .step { display: flex; gap: 16px; align-items: flex-start; }
+  .step-num {
+    flex: 0 0 auto; width: 38px; height: 38px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Sora', sans-serif; font-weight: 700; font-size: 15px; color: #fff;
+  }
+  .step-num.s1 { background: linear-gradient(135deg, var(--blue), var(--sky)); }
+  .step-num.s2 { background: linear-gradient(135deg, var(--teal), #5EE6D2); }
+  .step-num.s3 { background: linear-gradient(135deg, var(--violet), var(--sky)); }
+  .step b { display: block; font-weight: 600; color: var(--navy-deep); font-size: 16px; margin: 0 0 2px; }
+  .step span { color: var(--ink-soft); font-size: 14.5px; }
+
+  /* ===== FORM PANEL ===== */
+  .panel {
+    position: relative; background: #fff;
+    border: 1px solid var(--line); border-radius: 26px;
+    padding: 40px 38px 34px;
+    box-shadow: 0 30px 80px rgba(20,30,60,0.10);
+  }
+  .panel::before {
+    content: ''; position: absolute; top: -1px; left: 44px; right: 44px; height: 4px;
+    border-radius: 0 0 10px 10px;
+    background: linear-gradient(90deg, var(--blue), var(--teal), var(--violet));
+  }
+  .panel h2 { font-size: 26px; font-weight: 800; color: var(--navy-deep); letter-spacing: -0.02em; margin: 0 0 6px; }
+  .panel-sub { color: var(--ink-soft); font-size: 15px; margin: 0 0 24px; }
+  .field { margin: 0 0 15px; }
+  .field label { display: block; font-size: 13px; font-weight: 600; color: var(--navy); margin: 0 0 6px; }
+  .field label .opt { color: var(--ink-soft); font-weight: 400; }
+  .field input, .field select, .field textarea {
+    width: 100%; font-family: inherit; font-size: 15px; color: var(--ink);
+    background: var(--paper-soft); border: 1.5px solid var(--line); border-radius: 13px;
+    padding: 13px 15px; box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  }
+  .field textarea { min-height: 104px; resize: vertical; }
+  .field input:focus, .field select:focus, .field textarea:focus {
+    outline: none; border-color: var(--blue); background: #fff;
+    box-shadow: 0 0 0 4px rgba(43,127,224,0.12);
+  }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    border-radius: 999px; font-size: 16px; font-weight: 600; cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
+  }
+  .btn-primary {
+    width: 100%; border: none; padding: 16px 30px; color: #fff;
+    background: linear-gradient(135deg, var(--navy-deep), var(--blue));
+    -webkit-appearance: none; appearance: none; font-family: inherit;
+    box-shadow: 0 10px 26px rgba(43,127,224,0.28);
+  }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 14px 32px rgba(43,127,224,0.34); }
+  .btn-primary:disabled { opacity: 0.7; cursor: default; transform: none; }
+
+  .note { font-size: 12.5px; color: var(--ink-soft); text-align: center; margin: 14px 0 0; }
+  .note a { color: var(--blue); font-weight: 600; }
+  .error { display: none; color: #d5453c; font-size: 13.5px; margin: 0 0 14px; }
+  .error.show { display: block; }
+
+  .success { display: none; text-align: center; padding: 30px 6px 10px; }
+  .success.show { display: block; }
+  .success .tick {
+    width: 64px; height: 64px; border-radius: 50%; margin: 0 auto 20px;
+    background: linear-gradient(135deg, var(--blue), var(--teal));
+    color: #fff; display: flex; align-items: center; justify-content: center; font-size: 30px;
+    box-shadow: 0 12px 30px rgba(63,217,198,0.35);
+  }
+  .success h3 { font-size: 24px; color: var(--navy-deep); margin: 0 0 8px; }
+  .success p { color: var(--ink-soft); font-size: 15px; margin: 0; }
+
+  /* ===== REASSURANCE ===== */
+  .assure { padding: 70px 0 30px; }
+  .assure-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .assure-card {
+    background: var(--paper-soft); border: 1px solid var(--line); border-radius: 20px;
+    padding: 26px 26px 24px;
+  }
+  .assure-card .dot { width: 12px; height: 12px; border-radius: 50%; margin-bottom: 16px; }
+  .assure-card h3 { font-size: 17px; font-weight: 700; color: var(--navy-deep); margin: 0 0 6px; }
+  .assure-card p { font-size: 14.5px; color: var(--ink-soft); margin: 0; }
+
+  footer { border-top: 1px solid var(--line); padding: 48px 0 36px; margin-top: 50px; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+  .footer-brand { display: flex; align-items: center; gap: 10px; color: var(--ink-soft); font-size: 14px; }
+  .footer-brand img { height: 22px; }
+  .footer-links { display: flex; flex-wrap: wrap; gap: 10px 24px; font-size: 14px; color: var(--ink-soft); }
+  .footer-links a:hover { color: var(--navy); }
+
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s var(--ease), transform 0.6s var(--ease); }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 940px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+    .hero { padding: 140px 24px 70px; }
+  }
+  @media (max-width: 760px) {
+    .nav-links { display: none; }
+    .nav-cta { display: none; }
+    .nav-toggle { display: flex; }
+    .row { grid-template-columns: 1fr; }
+    .assure-grid { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-orb { animation: none; }
+    .pulse { animation: none; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="brand">
+        <img src="assets/logo-lockup.png" alt="Updraft Studios" id="logoImg">
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="services.html">Services</a>
+        <a href="approach.html">Approach</a>
+      </div>
+      <a href="#partner" class="nav-cta">Partner up</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="services.html">Services</a>
+    <a href="approach.html">Approach</a>
+    <a href="#partner">Partner up</a>
+  </div>
+
+  <header class="hero">
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
+    <img class="wing-mark" src="assets/wing-transparent.png" alt="">
+
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow"><span class="pulse"></span>Start the conversation</span>
+        <h1>Let's build something that <span class="accent">lifts.</span></h1>
+        <p class="lede">Tell us where you're trying to go and what's in the way. We'll reply with real, specific next steps. No pitch deck attached.</p>
+
+        <div class="chips">
+          <span class="chip"><i class="c1"></i>Branding</span>
+          <span class="chip"><i class="c2"></i>Web Design</span>
+          <span class="chip"><i class="c3"></i>Growth</span>
+          <span class="chip"><i class="c4"></i>Publishing</span>
+          <span class="chip"><i class="c5"></i>Talent</span>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <span class="step-num s1">1</span>
+            <div><b>You share the basics</b><span>The short form takes about a minute.</span></div>
+          </div>
+          <div class="step">
+            <span class="step-num s2">2</span>
+            <div><b>We reply within a day or two</b><span>A real person reads it. No autoresponder.</span></div>
+          </div>
+          <div class="step">
+            <span class="step-num s3">3</span>
+            <div><b>We map a clear next move</b><span>Even if that's a no, you leave with direction.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel reveal" id="partner">
+        <form id="partnerForm" novalidate>
+          <h2>Tell us about you.</h2>
+          <p class="panel-sub">A few details, and we'll take it from there.</p>
+          <div class="error" id="partnerError" role="alert"></div>
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" autocomplete="name" placeholder="Your name" required>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+          </div>
+          <div class="row">
+            <div class="field">
+              <label for="brand">Brand / company <span class="opt">(optional)</span></label>
+              <input id="brand" name="brand" type="text" placeholder="Name, if any">
+            </div>
+            <div class="field">
+              <label for="brand_type">Type of brand</label>
+              <select id="brand_type" name="brand_type">
+                <option value="">Select…</option>
+                <option>Personal brand</option>
+                <option>Business / company</option>
+                <option>Creator / talent</option>
+                <option>Nonprofit</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="goals">Goals &amp; struggles</label>
+            <textarea id="goals" name="goals" placeholder="Briefly: what are you trying to build, and what's getting in the way?" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Partner up</button>
+          <p class="note">No pressure, no spam. Just a real reply.</p>
+          <p class="note">Prefer email or a call? <a href="mailto:officiallyupdraft@gmail.com">officiallyupdraft@gmail.com</a> or <a href="tel:+13476200020">(347) 620-0020</a>.</p>
+        </form>
+        <div class="success" id="partnerSuccess" role="status">
+          <div class="tick">✓</div>
+          <h3>Got it.</h3>
+          <p>Thanks, <span id="successName">friend</span>. We'll be in touch within a day or two.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="assure">
+    <div class="wrap">
+      <div class="assure-grid">
+        <div class="assure-card reveal">
+          <span class="dot" style="background:var(--blue)"></span>
+          <h3>No pressure</h3>
+          <p>Reaching out commits you to nothing. It's a conversation, not a contract.</p>
+        </div>
+        <div class="assure-card reveal">
+          <span class="dot" style="background:var(--teal)"></span>
+          <h3>Real humans</h3>
+          <p>Every reply is written by us, for you. Never a template or a bot.</p>
+        </div>
+        <div class="assure-card reveal">
+          <span class="dot" style="background:var(--violet)"></span>
+          <h3>Fast and specific</h3>
+          <p>You get a concrete answer and a clear next step. Not a generic pitch.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <div class="footer-brand">
+        <img src="assets/wing-transparent.png" alt="">
+        <span>© 2026 Updraft Studios</span>
+      </div>
+      <div class="footer-links">
+        <a href="services.html">Services</a>
+        <a href="#partner">Partner up</a>
+        <a href="mailto:officiallyupdraft@gmail.com">officiallyupdraft@gmail.com</a>
+        <a href="tel:+13476200020">(347) 620-0020</a>
+      </div>
+    </div>
+  </footer>
+
+<script>
+(function () {
+  // Email endpoint for partner inquiries. Formspree -> officiallyupdraft@gmail.com
+  var ENDPOINT = 'https://formspree.io/f/xdendzke';
+
+  var form = document.getElementById('partnerForm');
+  var success = document.getElementById('partnerSuccess');
+  var err = document.getElementById('partnerError');
+
+  function setError(msg) { err.textContent = msg; err.classList.add('show'); }
+  function clearError() { err.textContent = ''; err.classList.remove('show'); }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    clearError();
+    var name = document.getElementById('name').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var goals = document.getElementById('goals').value.trim();
+    if (!name) { setError('Please add your name.'); return; }
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { setError('Please add a valid email.'); return; }
+    if (!goals) { setError('Tell us a little about your goals.'); return; }
+
+    var data = {
+      name: name,
+      email: email,
+      brand: document.getElementById('brand').value.trim(),
+      brand_type: document.getElementById('brand_type').value,
+      goals: goals,
+      _subject: 'New partner inquiry: ' + name
+    };
+
+    var btn = form.querySelector('.btn-primary');
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    fetch(ENDPOINT, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    })
+      .then(function (res) {
+        if (!res.ok) { throw new Error('HTTP ' + res.status); }
+        document.getElementById('successName').textContent = name.split(' ')[0];
+        form.style.display = 'none';
+        success.classList.add('show');
+      })
+      .catch(function () {
+        setError('Something went wrong. Please try again, or email us directly.');
+      })
+      .finally(function () {
+        btn.disabled = false;
+        btn.textContent = 'Partner up';
+      });
+  });
+
+  // Mobile menu
+  var navToggle = document.getElementById('navToggle');
+  var mobileMenu = document.getElementById('mobileMenu');
+  navToggle.addEventListener('click', function () { mobileMenu.classList.toggle('open'); });
+  mobileMenu.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () { mobileMenu.classList.remove('open'); });
+  });
+
+  // Reveal on scroll
+  var els = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { threshold: 0.15 });
+    els.forEach(function (el) { io.observe(el); });
+  } else {
+    els.forEach(function (el) { el.classList.add('in'); });
+  }
+})();
+</script>
+</body>
+</html>

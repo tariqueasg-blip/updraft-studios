@@ -1,0 +1,20 @@
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Digital Renovation: a monitor/browser window being redesigned, with a pencil/cursor accent -->
+  <g fill="#1B2A6B">
+    <!-- browser window -->
+    <rect x="80" y="90" width="240" height="180" rx="10"/>
+    <rect x="80" y="90" width="240" height="34" rx="10" fill="#0F1A45"/>
+    <circle cx="100" cy="107" r="5" fill="#ffffff"/>
+    <circle cx="118" cy="107" r="5" fill="#ffffff"/>
+    <circle cx="136" cy="107" r="5" fill="#ffffff"/>
+    <!-- inner content blocks (white cutouts) -->
+    <rect x="100" y="144" width="200" height="16" rx="4" fill="#ffffff"/>
+    <rect x="100" y="172" width="140" height="16" rx="4" fill="#ffffff"/>
+    <rect x="100" y="200" width="170" height="60" rx="6" fill="#ffffff"/>
+  </g>
+  <!-- pencil / redesign accent -->
+  <g fill="#2B7FE0">
+    <path d="M300 250 L340 210 L360 230 L320 270 Z"/>
+    <path d="M296 254 L312 270 L296 286 Z"/>
+  </g>
+</svg>

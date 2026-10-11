@@ -1,0 +1,19 @@
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Lead Generation: a funnel/magnet pulling in target rings, representing pipeline + attraction -->
+  <g fill="#1B2A6B">
+    <!-- funnel -->
+    <path d="M110 100 L290 100 L215 210 L215 290 L185 290 L185 210 Z"/>
+  </g>
+  <!-- target rings feeding into funnel, brand blue accents -->
+  <g fill="none" stroke="#2B7FE0" stroke-width="10">
+    <circle cx="200" cy="150" r="0" opacity="0"/>
+  </g>
+  <g stroke="#2B7FE0" stroke-width="9" fill="none">
+    <circle cx="120" cy="60" r="22"/>
+    <circle cx="120" cy="60" r="10" fill="#2B7FE0" stroke="none"/>
+  </g>
+  <g stroke="#3FD9C6" stroke-width="8" fill="none">
+    <circle cx="290" cy="55" r="16"/>
+    <circle cx="290" cy="55" r="7" fill="#3FD9C6" stroke="none"/>
+  </g>
+</svg>

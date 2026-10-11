@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>What We Do | Updraft Studios</title>
+<meta name="description" content="Updraft Studios handles the parts of growth that shouldn't fall on you: websites, brand systems, lead generation, and talent management, all under one roof.">
+<script>
+  try { history.scrollRestoration = 'manual'; } catch (e) {}
+  if (location.hash) { history.replaceState(null, '', location.pathname + location.search); }
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy-deep: #0F1A45;
+    --navy: #1B2A6B;
+    --blue: #2B7FE0;
+    --sky: #4FB3FF;
+    --teal: #3FD9C6;
+    --ink: #14161C;
+    --ink-soft: #4A4E5A;
+    --paper: #FFFFFF;
+    --paper-soft: #F7F8FA;
+    --line: rgba(20,22,30,0.08);
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --nav-logo-h: 52px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--paper);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, h4, .brand-text, .kicker, .eyebrow { font-family: 'Sora', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+  h1, h2, h3, h4 { text-wrap: balance; }
+  p { text-wrap: pretty; }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+
+  /* ===================== NAV ===================== */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: #ffffff;
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner { max-width: 1180px; margin: 0 auto; padding: 18px 24px; display: flex; align-items: center; gap: 28px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 17px; letter-spacing: -0.01em; }
+  .brand #logoImg { height: var(--nav-logo-h, 48px); width: auto; }
+  .brand-custom { display: block; height: var(--nav-logo-h, 48px); width: auto; }
+  #brandText { display: none !important; }
+  .is-hidden { display: none !important; }
+  .brand .studios { font-size: 10px; font-weight: 600; letter-spacing: 0.14em; color: var(--ink-soft); display: block; margin-top: 1px; }
+  .brand-text { display: flex; flex-direction: column; line-height: 1.05; }
+  .brand-text .name { color: var(--navy); }
+  .nav-links { display: flex; gap: 32px; font-size: 14.5px; font-weight:500; color: var(--ink); margin-left: auto; }
+  .nav-links a { position: relative; padding: 4px 0; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--blue); }
+  .nav-links a.active { color: var(--blue); font-weight: 600; }
+  .nav-cta { background: var(--navy); color: #fff; padding: 10px 20px; border-radius: 999px; font-size: 14px; font-weight: 600; transition: background 0.2s ease, transform 0.15s ease; }
+  .nav-cta:hover { background: var(--blue); transform: translateY(-1px); }
+  .nav-toggle { display: none; flex-direction: column; gap: 4px; background: none; border: none; cursor: pointer; padding: 6px; margin-left: auto; }
+  .nav-toggle span { width: 22px; height: 2px; background: var(--navy); border-radius: 2px; transition: transform 0.25s ease, opacity 0.25s ease; }
+  .mobile-menu {
+    position: fixed; inset: 0; background: rgba(255,255,255,0.98); backdrop-filter: blur(20px);
+    z-index: 99; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 28px; font-size: 22px; font-weight: 600; color: var(--navy);
+    opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+  }
+  .mobile-menu.open { opacity: 1; pointer-events: auto; }
+
+  /* ===================== PAGE HERO ===================== */
+  .page-hero {
+    position: relative; padding: 130px 0 88px; text-align: center; overflow: hidden;
+    background: var(--navy-deep);
+  }
+  .page-hero::before {
+    content: ""; position: absolute; inset: 0;
+    background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=2000&q=80&auto=format&fit=crop');
+    background-size: cover; background-position: center;
+    opacity: 0.40;
+  }
+  .page-hero::after {
+    content: ""; position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 900px 600px at 18% 8%, rgba(63,217,198,0.14) 0%, rgba(63,217,198,0) 55%),
+      radial-gradient(ellipse 900px 700px at 85% 92%, rgba(79,179,255,0.22) 0%, rgba(79,179,255,0) 55%),
+      linear-gradient(180deg, rgba(15,26,69,0.38) 0%, rgba(15,26,69,0.62) 100%);
+  }
+  .page-hero .wrap { position: relative; z-index: 1; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue);
+    background: rgba(43,127,224,0.08); padding: 7px 16px; border-radius: 999px; margin-bottom: 28px;
+  }
+  .page-hero .eyebrow { color: var(--sky); background: rgba(79,179,255,0.12); border: 1px solid rgba(79,179,255,0.22); }
+  .page-hero h1 {
+    font-size: clamp(34px, 6.5vw, 68px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.05;
+    color: #fff; margin: 0 0 20px;
+  }
+  .page-hero .lede { max-width: 680px; margin: 0 auto; font-size: 18px; line-height: 1.65; color: rgba(255,255,255,0.82); }
+  .page-hero .eyebrow, .page-hero h1, .page-hero .lede { opacity: 0; animation: riseIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+  .page-hero .eyebrow { animation-delay: 0.1s; }
+  .page-hero h1 { animation-delay: 0.22s; }
+  .page-hero .lede { animation-delay: 0.34s; }
+  @keyframes riseIn {
+    from { opacity: 0; transform: translateY(26px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .page-hero .eyebrow, .page-hero h1, .page-hero .lede { animation: none; opacity: 1; }
+  }
+
+  /* ===================== SECTIONS ===================== */
+  section { padding: 88px 0; }
+  section.alt { background: var(--paper-soft); }
+  #core {
+    position: relative; overflow: hidden;
+    background:
+      radial-gradient(58% 46% at 90% -6%, rgba(79,179,255,.075), rgba(79,179,255,0) 70%),
+      radial-gradient(52% 44% at 2% 104%, rgba(63,217,198,.065), rgba(63,217,198,0) 70%);
+  }
+  #additional {
+    position: relative; overflow: hidden;
+    background:
+      radial-gradient(50% 40% at 96% 8%, rgba(43,127,224,.055), rgba(43,127,224,0) 70%),
+      var(--paper-soft);
+  }
+  /* scattered decorative accents */
+  .deco { position: absolute; pointer-events: none; z-index: 0; }
+  .deco-arcs { top: -70px; right: -70px; width: 360px; height: 360px; opacity: .55; }
+  .deco-arcs-b { bottom: -70px; left: -80px; width: 320px; height: 320px; opacity: .5; }
+  @media (max-width: 760px) { .deco-arcs, .deco-arcs-b { width: 240px; height: 240px; opacity: .4; } }
+
+  /* ===================== WHO WE SERVE ===================== */
+  .audience-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .audience-card {
+    background: #ffffff; border: 1px solid var(--line); border-radius: 20px; padding: 32px 30px;
+    box-shadow: 0 2px 10px rgba(20,30,60,.04);
+    transition: transform .35s var(--ease), box-shadow .35s var(--ease), border-color .3s ease;
+  }
+  .audience-card:hover { transform: translateY(-5px); box-shadow: 0 20px 44px rgba(20,30,60,.10); border-color: rgba(43,127,224,.25); }
+  .audience-card .ac-head { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .audience-card .ac-dot { width: 9px; height: 9px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--teal)); box-shadow: 0 0 0 4px rgba(43,127,224,.10); }
+  .audience-card h3 { font-size: 21px; font-weight: 800; color: var(--navy-deep); margin: 0; letter-spacing: -.01em; }
+  .audience-card p { font-size: 15.5px; line-height: 1.6; color: var(--ink-soft); margin: 0 0 18px; }
+  .audience-card ul { list-style: none; margin: 0; padding: 0; }
+  .audience-card ul li { position: relative; padding: 6px 0 6px 20px; font-size: 14.5px; color: var(--ink); line-height: 1.5; }
+  .audience-card ul li::before { content: ""; position: absolute; left: 1px; top: .78em; width: 5px; height: 5px; border-radius: 50%; background: rgba(27,42,107,.34); }
+  @media (max-width: 900px) { .audience-grid { grid-template-columns: 1fr; } }
+  .kicker { display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 14px; }
+  .kicker::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--teal)); box-shadow: 0 0 0 4px rgba(43,127,224,.10); }
+  .section-head { text-align: center; max-width: 680px; margin: 0 auto 64px; }
+  .section-head h2 { font-size: clamp(28px, 4.5vw, 44px); font-weight: 800; letter-spacing: -0.015em; color: var(--navy-deep); margin: 0 0 16px; line-height: 1.1; }
+  .section-head p { font-size: 17px; color: var(--ink-soft); line-height: 1.6; margin: 0; }
+  .section-head::after { content: ""; display: block; width: 44px; height: 3px; border-radius: 3px; margin: 26px auto 0; background: linear-gradient(90deg, var(--blue), var(--teal)); }
+
+  /* ===================== BUTTONS ===================== */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; padding: 15px 30px;
+    border-radius: 999px; font-size: 15.5px; font-weight: 600;
+    transition: transform 0.28s cubic-bezier(0.34, 1.45, 0.64, 1), box-shadow 0.28s ease, background 0.28s ease, border-color 0.28s ease;
+  }
+  .btn-primary { background: linear-gradient(135deg, var(--navy-deep), var(--blue)); color: #fff; box-shadow: 0 8px 24px rgba(15,26,69,0.25); }
+  .btn-primary:hover { transform: scale(1.06); box-shadow: 0 14px 34px rgba(15,26,69,0.34); }
+  .btn-ghost { background: transparent; color: var(--navy); border: 1.5px solid var(--line); }
+  .btn-ghost:hover { border-color: var(--navy); background: rgba(43,127,224,0.06); transform: scale(1.06); }
+  @media (prefers-reduced-motion: reduce) { .btn { transition: none; } .btn:hover { transform: none; } }
+
+  /* ===================== DEEP-DIVE SERVICES ===================== */
+  .deep-service {
+    display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center;
+    padding: 56px 0; border-bottom: 1px solid var(--line);
+  }
+  .deep-service:last-child { border-bottom: none; }
+  .deep-body h3 { font-size: clamp(24px, 3.2vw, 34px); font-weight: 800; letter-spacing: -0.015em; color: var(--navy-deep); margin: 0 0 14px; line-height: 1.1; }
+  .deep-body .desc { font-size: 17px; line-height: 1.62; color: var(--ink-soft); margin: 0 0 20px; max-width: 52ch; }
+  .deep-body ul { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 11px 26px; }
+  .deep-body ul li { position: relative; padding-left: 22px; font-size: 16px; color: var(--ink); }
+  .deep-body ul li::before { content: ""; position: absolute; left: 3px; top: .62em; width: 5px; height: 5px; border-radius: 50%; background: rgba(27,42,107,.34); }
+
+  /* hero orbs + dotgrid */
+  .orb { position: absolute; border-radius: 50%; filter: blur(56px); z-index: 0; }
+  .orb-1 { width: 360px; height: 360px; top: -70px; left: -40px; background: radial-gradient(circle, var(--sky) 0%, rgba(79,179,255,0) 70%); opacity: .55; }
+  .orb-2 { width: 320px; height: 320px; bottom: -90px; right: -30px; background: radial-gradient(circle, var(--teal) 0%, rgba(63,217,198,0) 70%); opacity: .45; }
+  .orb-3 { width: 260px; height: 260px; top: 38%; right: 20%; background: radial-gradient(circle, rgba(79,179,255,.8) 0%, rgba(79,179,255,0) 70%); opacity: .30; }
+  .dotgrid { position: absolute; inset: 0; z-index: 0; background-image: radial-gradient(rgba(255,255,255,0.16) 1px, transparent 1px); background-size: 26px 26px;
+    -webkit-mask-image: radial-gradient(60% 70% at 50% 42%, #000, transparent 76%); mask-image: radial-gradient(60% 70% at 50% 42%, #000, transparent 76%); }
+
+  /* reveal + grain */
+  .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); }
+  .reveal.is-visible { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+  .grain { position: fixed; inset: 0; pointer-events: none; z-index: 60; opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+  /* final CTA */
+  .final-cta { text-align: center; max-width: 660px; margin: 0 auto; }
+  .final-cta h2 { font-size: clamp(28px, 4.6vw, 46px); font-weight: 800; letter-spacing: -0.02em; color: var(--navy-deep); margin: 0 0 14px; line-height: 1.1; }
+  .final-cta p { font-size: 17px; color: var(--ink-soft); margin: 0 0 28px; line-height: 1.6; }
+  footer { padding: 40px 0; border-top: 1px solid var(--line); }
+  .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+  .footer-brand { display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--ink-soft); }
+  .footer-brand img { height: 22px; }
+  .footer-links { display: flex; flex-wrap: wrap; gap: 10px 24px; font-size: 14px; color: var(--ink-soft); }
+  .footer-links a:hover { color: var(--navy); }
+
+  /* SERVICE VISUALS — unified brand grade so nothing reads as raw stock */
+  .viz {
+    position: relative; border-radius: 24px; overflow: hidden; aspect-ratio: 4/3;
+    background: #0A1330; isolation: isolate;
+    box-shadow:
+      0 1px 2px rgba(15,26,69,.08),
+      0 10px 24px -6px rgba(15,26,69,.14),
+      0 34px 60px -26px rgba(15,26,69,.24),
+      inset 0 0 0 1px rgba(255,255,255,0.10),
+      inset 0 1px 0 rgba(255,255,255,0.16);
+    transition: transform .55s var(--ease), box-shadow .55s var(--ease);
+  }
+  .viz img {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;
+    filter: saturate(.92) contrast(1.04);
+    transition: transform 1.15s var(--ease); will-change: transform;
+  }
+  .deep-service:hover .viz img, .viz:hover img { transform: scale(1.07) translateY(-1.4%); }
+  .deep-service:hover .viz, .viz:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      0 2px 4px rgba(15,26,69,.10),
+      0 18px 40px -8px rgba(15,26,69,.18),
+      0 46px 80px -30px rgba(15,26,69,.28),
+      inset 0 0 0 1px rgba(43,127,224,0.34),
+      inset 0 1px 0 rgba(255,255,255,0.18);
+  }
+  .viz::before {
+    content: ""; position: absolute; inset: 0; z-index: 3; pointer-events: none;
+    background: linear-gradient(105deg, transparent 33%, rgba(255,255,255,.20) 48%, rgba(255,255,255,0) 63%);
+    transform: translateX(-130%); transition: transform 1.1s var(--ease);
+  }
+  .deep-service:hover .viz::before, .viz:hover::before { transform: translateX(130%); }
+  .viz::after {
+    content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none; mix-blend-mode: multiply;
+    background: linear-gradient(180deg, rgba(15,26,69,0) 60%, rgba(15,26,69,.30) 100%);
+  }
+  .deep-service.flip .viz { order: 2; }
+  .deep-service.compact { padding: 42px 0; grid-template-columns: .82fr 1fr; gap: 46px; }
+  .deep-service.compact .viz { aspect-ratio: 3/2; border-radius: 20px; }
+  .deep-service.compact h3 { font-size: 22px; }
+  .deep-service.compact .desc { margin-bottom: 0; }
+  .deep-body .chips { display: flex; flex-wrap: wrap; align-items: baseline; row-gap: 6px; margin-top: 16px; }
+  .deep-body .chips span { font-size: 13.5px; font-weight: 500; color: var(--ink-soft); }
+  .deep-body .chips span + span::before { content: "·"; margin: 0 9px; color: rgba(27,42,107,.30); }
+
+  /* section divider -> CTA */
+  #additional { padding-bottom: 0; }
+  #cta { padding-top: 0; position: relative; overflow: hidden; }
+  .bridge { display: flex; align-items: center; justify-content: center; padding: 50px 24px 58px; }
+  .bridge .b-line {
+    width: min(560px, 62%); height: 1px;
+    background: linear-gradient(90deg, rgba(43,127,224,0) 0%, rgba(43,127,224,.30) 50%, rgba(43,127,224,0) 100%);
+  }
+  @media (prefers-reduced-motion: reduce) { .deep-service:hover .viz::before { transform: none; } .viz img { transition: none; } }
+  @media (max-width: 860px) {
+    .deep-service, .deep-service.compact { grid-template-columns: 1fr; gap: 26px; }
+    .deep-service.flip .viz { order: 0; }
+    .deep-service.compact .viz { aspect-ratio: 16/10; }
+    .deep-body ul { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="brand">
+        <img src="assets/logo-lockup.png" alt="Updraft Studios" id="logoImg">
+        <span class="brand-text" id="brandText">
+          <span class="name">Updraft</span>
+          <span class="studios">STUDIOS</span>
+        </span>
+        <img class="brand-custom is-hidden" id="brandCustomImg" alt="Updraft Studios">
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="services.html" class="active">Services</a>
+        <a href="approach.html">Approach</a>
+        <a href="partner.html">Contact</a>
+      </div>
+      <a href="partner.html" class="nav-cta" id="navCta">Partner up</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="services.html">Services</a>
+    <a href="approach.html">Approach</a>
+    <a href="partner.html">Contact</a>
+  </div>
+
+  <header class="page-hero">
+    <span class="orb orb-1"></span>
+    <span class="orb orb-2"></span>
+    <span class="orb orb-3"></span>
+    <span class="dotgrid" aria-hidden="true"></span>
+    <div class="wrap">
+      <span class="eyebrow"><span class="pulse"></span>What We Do</span>
+      <h1>One team. Every altitude.</h1>
+      <p class="lede">From the first redesign to the first thousand leads, we take on the parts of growth that were never meant to sit on one person's plate.</p>
+    </div>
+  </header>
+
+  <section id="audience">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="kicker">Who We Serve</div>
+        <h2>Find where you fit.</h2>
+        <p>Three doors, one goal: real growth that lasts.</p>
+      </div>
+      <div class="audience-grid">
+        <article class="audience-card reveal">
+          <div class="ac-head"><span class="ac-dot" aria-hidden="true"></span><h3>Brands</h3></div>
+          <p>A brand lives or dies on the first impression. We make sure yours is unmistakable: a presence so clean and consistent that customers trust you before they've said a word.</p>
+          <ul>
+            <li>Brand identity &amp; positioning</li>
+            <li>Website &amp; digital experience</li>
+            <li>Content &amp; storytelling</li>
+            <li>Social presence</li>
+            <li>Launch &amp; rollout support</li>
+          </ul>
+        </article>
+        <article class="audience-card reveal">
+          <div class="ac-head"><span class="ac-dot" aria-hidden="true"></span><h3>Businesses</h3></div>
+          <p>If you're not showing up where your customers are looking, you don't exist to them. We make you impossible to miss, and turn visibility into booked, paying customers.</p>
+          <ul>
+            <li>Local SEO &amp; Google visibility</li>
+            <li>Lead generation &amp; prospecting</li>
+            <li>Outreach &amp; pipeline building</li>
+            <li>Websites built to convert</li>
+            <li>Paid advertising</li>
+          </ul>
+        </article>
+        <article class="audience-card reveal">
+          <div class="ac-head"><span class="ac-dot" aria-hidden="true"></span><h3>Talent</h3></div>
+          <p>Attention is only worth something when it has somewhere to go. We build the infrastructure, the deals, the systems, and the revenue streams that turn your audience into an asset.</p>
+          <ul>
+            <li>Equity partnerships</li>
+            <li>Growth &amp; monetization strategy</li>
+            <li>Brand deals &amp; sponsorships</li>
+            <li>Content systems</li>
+            <li>Representation &amp; negotiation</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="core">
+    <span class="deco deco-arcs" aria-hidden="true">
+      <svg viewBox="0 0 360 360" fill="none">
+        <defs><linearGradient id="dgA" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#4FB3FF"/><stop offset="1" stop-color="#3FD9C6"/>
+        </linearGradient></defs>
+        <circle cx="360" cy="0" r="118" stroke="url(#dgA)" stroke-width="1.1"/>
+        <circle cx="360" cy="0" r="160" stroke="url(#dgA)" stroke-width="1.1"/>
+        <circle cx="360" cy="0" r="202" stroke="url(#dgA)" stroke-width="1.1"/>
+        <circle cx="360" cy="0" r="244" stroke="url(#dgA)" stroke-width="1.1"/>
+      </svg>
+    </span>
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="kicker">Core Services</div>
+        <h2>Three engines, working together.</h2>
+        <p>Each one solves a real problem on its own. Together, they compound.</p>
+      </div>
+
+      <div class="deep-service reveal">
+        <div class="viz"><img src="assets/services/renovation.jpg" alt="" loading="lazy"></div>
+        <div class="deep-body">
+          <h3>Digital Renovation</h3>
+          <p class="desc">Your website is the first thing most customers see, and right now it might be costing you. We rebuild it around how people actually decide, so it earns its keep instead of just sitting there.</p>
+          <ul><li>Website design &amp; development</li><li>Brand identity &amp; systems</li><li>UX / UI redesign</li><li>Copy that converts</li><li>Performance &amp; speed</li><li>Ongoing care &amp; maintenance</li></ul>
+        </div>
+      </div>
+
+      <div class="deep-service flip reveal">
+        <div class="viz"><img src="assets/services/leads.jpg" alt="" loading="lazy"></div>
+        <div class="deep-body">
+          <h3>Lead Generation</h3>
+          <p class="desc">There are businesses near you that need what you sell and have never heard your name. We find them first, then start the conversation before your competition knows they exist.</p>
+          <ul><li>Scraping local businesses with no site</li><li>Automated prospecting</li><li>Smart targeting &amp; segmentation</li><li>Outreach campaigns</li><li>Pipeline &amp; CRM setup</li><li>Conversion optimization</li></ul>
+        </div>
+      </div>
+
+      <div class="deep-service reveal">
+        <div class="viz"><img src="assets/services/talent.jpg" alt="" loading="lazy"></div>
+        <div class="deep-body">
+          <h3>Talent Management</h3>
+          <p class="desc">Attention alone doesn't pay the bills. We partner with creators, share the risk, and build the business behind the following.</p>
+          <ul><li>Equity partnerships</li><li>Growth strategy</li><li>Monetization &amp; revenue systems</li><li>Brand deals &amp; sponsorships</li><li>Content systems &amp; calendars</li><li>Positioning for the long run</li></ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="additional" class="alt">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="kicker">And More</div>
+        <h2>Everything else that moves the needle.</h2>
+        <p>Beyond the core three is the rest of the toolkit, so growth never stalls because a piece went missing.</p>
+      </div>
+
+      <div class="deep-service compact reveal">
+        <div class="viz"><img src="assets/services/brand.jpg" alt="" loading="lazy"></div>
+        <div class="deep-body">
+          <h3>Brand Identity</h3>
+          <p class="desc">Logos and systems that make a new company look established.</p>
+          <div class="chips"><span>Logo design</span><span>Color &amp; type</span><span>Guidelines</span><span>Brand voice</span></div>
+        </div>
+      </div>
+
+      <div class="deep-service compact flip reveal">
+        <div class="viz"><img src="assets/services/webdev.jpg" alt="" loading="lazy"></div>
+        <div class="deep-body">
+          <h3>Web Design &amp; Development</h3>
+          <p class="desc">Custom sites that load fast and turn visitors into customers.</p>
+          <div class="chips"><span>Custom design</span><span>Responsive build</span><span>CMS</span><span>Speed &amp; SEO</span></div>
+        </div>
+      </div>
+
+      <div class="deep-service compact reveal">
+        <div class="viz"><img src="assets/services/book.jpg" alt="" loading="lazy"></div>
+        <div class="deep-body">
+          <h3>Book Publishing &amp; Handling</h3>
+          <p class="desc">Every book starts with a story. We take yours from idea to finished book, and we can write it with you if needed.</p>
+          <div class="chips"><span>Editing &amp; layout</span><span>Cover design</span><span>Print &amp; eBook</span><span>Distribution</span></div>
+        </div>
+      </div>
+
+      <div class="deep-service compact flip reveal">
+        <div class="viz"><img src="assets/services/video.jpg" alt="" loading="lazy"></div>
+        <div class="deep-body">
+          <h3>Content &amp; Short Video</h3>
+          <p class="desc">Video built to stop the scroll and hold attention.</p>
+          <div class="chips"><span>Short video cuts</span><span>Captions</span><span>Hooks</span><span>Scheduling</span></div>
+        </div>
+      </div>
+
+      <div class="deep-service compact reveal">
+        <div class="viz"><img src="assets/services/social.jpg" alt="" loading="lazy"></div>
+        <div class="deep-body">
+          <h3>Social Media Management</h3>
+          <p class="desc">Showing up every day, on the platforms that matter.</p>
+          <div class="chips"><span>Strategy</span><span>Calendar</span><span>Posting</span><span>Community</span></div>
+        </div>
+      </div>
+
+      <div class="deep-service compact flip reveal">
+        <div class="viz"><img src="assets/services/seo.jpg" alt="" loading="lazy"></div>
+        <div class="deep-body">
+          <h3>SEO &amp; Search Visibility</h3>
+          <p class="desc">Be the first name people see when they search.</p>
+          <div class="chips"><span>Technical SEO</span><span>Page optimization</span><span>Local</span><span>Content</span></div>
+        </div>
+      </div>
+
+      <div class="deep-service compact reveal">
+        <div class="viz"><img src="assets/services/ads.jpg" alt="" loading="lazy"></div>
+        <div class="deep-body">
+          <h3>Paid Advertising</h3>
+          <p class="desc">Campaigns that earn back more than they spend.</p>
+          <div class="chips"><span>Meta &amp; Google</span><span>Creative</span><span>Targeting</span><span>Optimization</span></div>
+        </div>
+      </div>
+
+      <div class="deep-service compact flip reveal">
+        <div class="viz"><img src="assets/services/email.jpg" alt="" loading="lazy"></div>
+        <div class="deep-body">
+          <h3>Email &amp; CRM Automation</h3>
+          <p class="desc">Every lead followed up with, even while you sleep.</p>
+          <div class="chips"><span>Flows</span><span>Campaigns</span><span>Segmentation</span><span>Integrations</span></div>
+        </div>
+      </div>
+
+      <div class="deep-service compact reveal">
+        <div class="viz"><img src="assets/services/growth.jpg" alt="" loading="lazy"></div>
+        <div class="deep-body">
+          <h3>Growth &amp; Monetization</h3>
+          <p class="desc">Turn a growing audience into steady income.</p>
+          <div class="chips"><span>Offers</span><span>Funnels</span><span>Pricing</span><span>Revenue systems</span></div>
+        </div>
+      </div>
+
+      <div class="deep-service compact flip reveal">
+        <div class="viz"><img src="assets/services/analytics.jpg" alt="" loading="lazy"></div>
+        <div class="deep-body">
+          <h3>Analytics &amp; Reporting</h3>
+          <p class="desc">See what's working, then double down on it.</p>
+          <div class="chips"><span>Dashboards</span><span>Tracking</span><span>Attribution</span><span>Insights</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="bridge" aria-hidden="true">
+    <span class="b-line"></span>
+  </div>
+
+  <section id="cta">
+    <span class="deco deco-arcs-b" aria-hidden="true">
+      <svg viewBox="0 0 320 320" fill="none">
+        <defs><linearGradient id="dgB" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#4FB3FF"/><stop offset="1" stop-color="#3FD9C6"/>
+        </linearGradient></defs>
+        <circle cx="0" cy="320" r="118" stroke="url(#dgB)" stroke-width="1.1"/>
+        <circle cx="0" cy="320" r="160" stroke="url(#dgB)" stroke-width="1.1"/>
+        <circle cx="0" cy="320" r="202" stroke="url(#dgB)" stroke-width="1.1"/>
+      </svg>
+    </span>
+    <div class="wrap final-cta reveal">
+      <h2>Ready to catch the updraft?</h2>
+      <p>One conversation, no pressure and no jargon. Just a clear plan for what comes next.</p>
+      <a href="partner.html" class="btn btn-primary">Partner up</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <div class="footer-brand">
+        <img src="assets/wing-transparent.png" alt="">
+        <span>© 2026 Updraft Studios</span>
+      </div>
+      <div class="footer-links">
+        <a href="services.html">Services</a>
+        <a href="partner.html">Contact</a>
+        <a href="mailto:officiallyupdraft@gmail.com">officiallyupdraft@gmail.com</a>
+        <a href="tel:+13476200020">(347) 620-0020</a>
+      </div>
+    </div>
+  </footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('is-visible'); io.unobserve(entry.target); }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+  const navToggle = document.getElementById('navToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  navToggle.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+  function applyResponsiveNav() {
+    const isMobile = window.innerWidth <= 760;
+    document.getElementById('navLinks').style.display = isMobile ? 'none' : 'flex';
+    document.getElementById('navCta').style.display = isMobile ? 'none' : 'inline-flex';
+    navToggle.style.display = isMobile ? 'flex' : 'none';
+  }
+  applyResponsiveNav();
+  window.addEventListener('resize', applyResponsiveNav);
+</script>
+</body>
+</html>

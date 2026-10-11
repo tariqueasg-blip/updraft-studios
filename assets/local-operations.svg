@@ -1,0 +1,8 @@
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Local Operations: simplified map pin with a clean checkmark (bigger, more legible at small sizes) -->
+  <g fill="#1B2A6B">
+    <path d="M200 70 C150 70 115 108 115 155 C115 210 200 300 200 300 C200 300 285 210 285 155 C285 108 250 70 200 70 Z"/>
+  </g>
+  <circle cx="200" cy="152" r="38" fill="#ffffff"/>
+  <path d="M180 152 L195 168 L222 136" stroke="#2B7FE0" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

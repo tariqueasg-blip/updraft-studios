@@ -1,0 +1,12 @@
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Talent Management: person inside a single spotlight/badge ring - reads as "represented talent" more clearly than loose stars -->
+  <circle cx="200" cy="200" r="120" fill="none" stroke="#2B7FE0" stroke-width="10"/>
+  <g fill="#1B2A6B">
+    <circle cx="200" cy="165" r="42"/>
+    <path d="M135 285 C135 225 165 205 200 205 C235 205 265 225 265 285 Z"/>
+  </g>
+  <!-- small star badge accent, single, top-right of ring -->
+  <g fill="#3FD9C6">
+    <path d="M295 95 L301 111 L318 111 L304 121 L309 137 L295 127 L281 137 L286 121 L272 111 L289 111 Z"/>
+  </g>
+</svg>
