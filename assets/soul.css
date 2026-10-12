@@ -11,11 +11,13 @@ body::after{
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* de-pill any pill-style labels into quiet editorial marks */
+/* hero labels: kill the box/border, use a hairline + quiet uppercase label */
 .eyebrow{
-  background:none !important;padding:0 !important;border-radius:0 !important;
-  letter-spacing:.2em;font-size:12.5px;color:var(--navy);gap:10px;
+  border:0 !important;background:none !important;padding:0 !important;border-radius:0 !important;
+  display:inline-flex !important;align-items:center;gap:14px;
+  letter-spacing:.22em;font-size:12.5px;font-weight:700;text-transform:uppercase;color:var(--blue);
 }
+.eyebrow::before{content:"";width:30px;height:1px;background:linear-gradient(90deg,var(--blue),var(--teal));flex:none}
 /* the animated dot reads like a live-status indicator — remove it site-wide */
 .pulse{display:none !important}
 
@@ -81,6 +83,18 @@ body::after{
   font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(18px,2.6vw,28px);letter-spacing:-.01em}
 .photoband .pb-cap small{display:block;font-family:'Inter',sans-serif;font-weight:500;font-size:13px;
   letter-spacing:.14em;text-transform:uppercase;opacity:.8;margin-bottom:6px}
+
+/* animated headline words (revealed on scroll) */
+.uw{display:inline-block;opacity:0;transform:translateY(.55em) rotate(1.2deg);
+  transition:opacity .62s cubic-bezier(.22,1,.36,1),transform .62s cubic-bezier(.22,1,.36,1)}
+.uw.in{opacity:1;transform:none}
+/* a hairline that draws itself in under section headings */
+.section-head h2{position:relative}
+.section-head h2::after{content:"";position:absolute;left:50%;bottom:-14px;height:3px;width:0;border-radius:3px;
+  background:linear-gradient(90deg,var(--blue),var(--teal));transform:translateX(-50%);
+  transition:width .7s cubic-bezier(.22,1,.36,1) .15s}
+.section-head h2.in::after{width:56px}
+@media (prefers-reduced-motion:reduce){ .uw{opacity:1 !important;transform:none !important} [class]{transition:none !important} }
 
 /* soft top hairline accent so sections feel crafted, not stacked */
 .craft-hr{height:1px;border:0;margin:0;background:linear-gradient(90deg,transparent,var(--line) 20%,var(--line) 80%,transparent)}
