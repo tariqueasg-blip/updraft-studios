@@ -16,15 +16,18 @@ body::after{
   background:none !important;padding:0 !important;border-radius:0 !important;
   letter-spacing:.2em;font-size:12.5px;color:var(--navy);gap:10px;
 }
-.kicker{background:none !important;border:0 !important;}
+/* the animated dot reads like a live-status indicator — remove it site-wide */
+.pulse{display:none !important}
 
-/* hero accent: a soft marker swash behind the accented words
-   (replaces the underline — subtle, skewed, not a flat bar) */
-.hero h1 .hl-word.accent{position:relative;z-index:1;}
-.hero h1 .hl-word.accent::before{
-  content:"";position:absolute;z-index:-1;left:-.04em;right:-.04em;bottom:.055em;height:.34em;border-radius:3px;
-  background:linear-gradient(100deg,rgba(79,179,255,.30),rgba(63,217,198,.30));
-  transform:skewX(-10deg);transform-origin:left center;
+/* section kickers: a short gradient hairline + a quiet label (no dot, no pill) */
+.kicker{
+  display:inline-flex !important;align-items:center;gap:13px;
+  background:none !important;border:0 !important;
+  font-size:12px !important;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--navy);
+}
+.kicker::before{
+  content:"" !important;width:28px !important;height:1px !important;border-radius:0 !important;box-shadow:none !important;
+  background:linear-gradient(90deg,var(--blue),var(--teal)) !important;
 }
 
 /* a small recurring sparkle mark, used as a decorative accent */
@@ -45,13 +48,25 @@ body::after{
 /* recurring wing watermark — props inherit the emblem motif */
 .wing-mark{position:absolute;pointer-events:none;user-select:none;opacity:.06;z-index:0}
 .has-wing{position:relative;overflow:hidden}
-.has-wing > *:not(.wing-mark){position:relative;z-index:1}
 .wing-mark.wm-right{width:560px;right:-150px;top:50%;transform:translateY(-50%) rotate(9deg)}
 .wing-mark.wm-left{width:460px;left:-150px;bottom:-160px;transform:rotate(-6deg)}
 @media (max-width:760px){
   .wing-mark.wm-right{width:340px;right:-150px}
   .wing-mark.wm-left{width:300px;left:-120px}
 }
+
+/* decorative concentric arcs (defined here so every page using them positions correctly) */
+.deco{position:absolute;pointer-events:none;z-index:0}
+.deco svg{width:100%;height:100%;display:block}
+.deco-arcs{top:-70px;right:-70px;width:340px;height:340px;opacity:.5}
+.deco-arcs-b{bottom:-80px;left:-90px;width:320px;height:320px;opacity:.5}
+@media (max-width:760px){ .deco-arcs{width:220px;height:220px;opacity:.4} }
+
+/* neutralize pill-style "chips" (colored dot + rounded pill) into quiet labels */
+.chip{background:none !important;border:0 !important;padding:0 !important;border-radius:0 !important;box-shadow:none !important;
+  color:var(--navy);font-weight:600;letter-spacing:.02em}
+.chip i{display:none !important}
+.chips{gap:20px !important}
 
 /* dotted rule used between blocks */
 .rule-dots{display:flex;gap:8px;justify-content:center;padding:10px 0}
@@ -69,3 +84,15 @@ body::after{
 
 /* soft top hairline accent so sections feel crafted, not stacked */
 .craft-hr{height:1px;border:0;margin:0;background:linear-gradient(90deg,transparent,var(--line) 20%,var(--line) 80%,transparent)}
+
+/* feature band — a designed, on-brand panel (replaces random stock photos) */
+.feature-band{position:relative;overflow:hidden;border-radius:26px;padding:58px 50px;color:#fff;
+  background:linear-gradient(150deg,#0F1A45 0%,#1B2A6B 52%,#2B7FE0 138%);
+  box-shadow:0 36px 90px rgba(15,26,69,.30)}
+.feature-band .fb-wing{position:absolute;width:560px;right:-140px;top:50%;transform:translateY(-50%) rotate(8deg);opacity:.16;pointer-events:none}
+.feature-band .fb-inner{position:relative;z-index:1;max-width:660px}
+.feature-band .fb-eyebrow{font-family:'Space Grotesk',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.2em;font-size:12.5px;color:#9ecbff;margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.feature-band .fb-eyebrow::before{content:"";width:26px;height:1px;background:#9ecbff;opacity:.8}
+.feature-band h3{font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(24px,3.5vw,40px);letter-spacing:-.02em;line-height:1.1;margin:0 0 24px;color:#fff}
+.feature-band p{color:rgba(255,255,255,.82);font-size:16.5px;line-height:1.6;margin:0 0 26px;max-width:560px}
+@media (max-width:760px){ .feature-band{padding:40px 26px} .feature-band .fb-wing{width:360px;right:-150px} }
