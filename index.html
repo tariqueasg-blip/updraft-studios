@@ -13,6 +13,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/soul.css">
 <style>
   :root {
     --navy-deep: #0F1A45;
@@ -1180,6 +1181,25 @@
   #contact { padding-top: 20px; padding-bottom: 40px; }
   #faq { background: radial-gradient(44% 40% at 4% 106%, rgba(63,217,198,.06), rgba(63,217,198,0) 70%); }
   @media (max-width: 760px) { .deco-arcs { width: 220px; height: 220px; opacity: .4; } }
+  /* ===================== SOUL PASS ===================== */
+  /* fine paper grain over the whole page */
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:9998;opacity:.05;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  /* de-pill the hero eyebrow into a quiet editorial label */
+  .eyebrow{background:none;padding:0;border-radius:0;font-size:12.5px;letter-spacing:.2em;color:var(--navy);gap:10px}
+  /* capability strip (fills the gap under the rotator) */
+  .caps{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;padding:10px 24px 2px;color:var(--ink-soft);font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+  .caps span{display:inline-flex;align-items:center;gap:16px}
+  .caps span::after{content:"";width:5px;height:5px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--teal));opacity:.75}
+  .caps span:last-child::after{display:none}
+  /* wing watermarks, echoing the emblem */
+  .wing-mark{position:absolute;pointer-events:none;user-select:none;opacity:.06;z-index:0}
+  #positioning{position:relative;overflow:hidden}
+  #positioning .positioning{position:relative;z-index:1}
+  #positioning .wing-mark{width:560px;right:-150px;top:50%;transform:translateY(-50%) rotate(9deg)}
+  footer{position:relative;overflow:hidden}
+  footer .wing-mark{width:440px;left:-150px;bottom:-160px;opacity:.05;transform:rotate(-6deg)}
+  @media (max-width:760px){ #positioning .wing-mark{width:340px;right:-140px} footer .wing-mark{width:300px;left:-120px} }
 </style>
 </head>
 <body>
@@ -1262,6 +1282,10 @@
     <span class="r-roll"><span class="r-track"><span><i>Get</i> found.</span><span><i>Get</i> chosen.</span><span><i>Get</i> booked.</span><span><i>Get</i> paid.</span><span><i>Get</i> found.</span></span></span>
   </div>
 
+  <div class="caps" aria-hidden="true">
+    <span>Websites</span><span>Branding</span><span>Growth</span><span>Content</span><span>Talent</span>
+  </div>
+
   <div class="bridge" aria-hidden="true">
     <span class="b-line"></span>
   </div>
@@ -1308,10 +1332,19 @@
   </section>
 
   <section id="positioning">
+    <img class="wing-mark" src="assets/wing-transparent.png" alt="" aria-hidden="true">
     <div class="positioning reveal">
       <h2>The solution isn't louder.<br>It's <span class="hl">positioning.</span></h2>
       <p>Most businesses try to shout louder than the competition. We do the opposite. We put you exactly where the right people are already looking, so you don't have to compete for attention. You attract it.</p>
       <a href="partner.html" class="btn btn-primary">Partner up</a>
+    </div>
+  </section>
+
+  <section id="proof" class="wrap" style="padding:10px 24px 46px">
+    <div class="photoband">
+      <img src="assets/services/growth.jpg" alt="" loading="lazy">
+      <div class="pb-veil"></div>
+      <div class="pb-cap"><small>Built to grow</small>Positioned brands. Working funnels. Real pipelines.</div>
     </div>
   </section>
 
@@ -1365,6 +1398,7 @@
   </section>
 
   <footer>
+    <img class="wing-mark" src="assets/wing-transparent.png" alt="" aria-hidden="true">
     <div class="wrap footer-inner">
       <div class="footer-brand">
         <img src="assets/wing-transparent.png" alt="">
