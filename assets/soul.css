@@ -89,10 +89,10 @@ body::after{
 .uw.in{opacity:1;transform:none}
 /* a hairline that draws itself in under section headings */
 .section-head h2{position:relative}
-.section-head h2::after{content:"";position:absolute;left:50%;bottom:-14px;height:3px;width:0;border-radius:3px;
+.section-head h2::after{content:"";position:absolute;left:50%;bottom:-13px;height:2px;width:0;border-radius:999px;
   background:linear-gradient(90deg,var(--blue),var(--teal));transform:translateX(-50%);
   transition:width .7s cubic-bezier(.22,1,.36,1) .15s}
-.section-head h2.in::after{width:56px}
+.section-head h2.in::after{width:48px}
 @media (prefers-reduced-motion:reduce){ .uw{opacity:1 !important;transform:none !important} [class]{transition:none !important} }
 
 /* soft top hairline accent so sections feel crafted, not stacked */

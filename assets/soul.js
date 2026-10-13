@@ -51,6 +51,8 @@
       if (io && !reduce) io.observe(el); else el.classList.add('in', 'is-visible');
     });
 
+    fitRotator();
+
     /* safety: nothing may stay hidden (covers missed observers / reduced motion) */
     setTimeout(function () {
       document.querySelectorAll('.uw, .section-head h2').forEach(function (e) { e.classList.add('in'); });
@@ -59,6 +61,48 @@
       });
     }, 2400);
   }
+  /* keep the "Get ___" rotator the SAME WIDTH every frame, so it always sits
+     centered over the word strip no matter how long the word is */
+  function fitRotator() {
+    var track = document.querySelector('.rotator .r-track');
+    var roll = document.querySelector('.rotator .r-roll');
+    if (!track || !roll || track.children.length < 2) return;
+    var rows = Array.prototype.slice.call(track.children);
+    var cs = getComputedStyle(roll);
+    var base = parseFloat(cs.fontSize) || 82;
+    var gapPx = base * 0.24;
+    var cv = document.createElement('canvas').getContext('2d');
+    var meas = function (t) { cv.font = cs.fontWeight + ' ' + base + 'px ' + cs.fontFamily; return cv.measureText(t).width; };
+    var nat = rows.map(function (r) {
+      var g = r.querySelector('i');
+      var gt = g ? g.textContent : '';
+      return meas(gt) + gapPx + meas(r.textContent.slice(gt.length).trim());
+    });
+    var caps = document.querySelector('.caps');
+    var target = 0;
+    if (caps && caps.children.length) { var f = caps.children[0].getBoundingClientRect(), l = caps.children[caps.children.length - 1].getBoundingClientRect(); target = l.right - f.left; }
+    if (!target) target = Math.max.apply(null, nat);
+    var H = Math.round(base * 1.22);
+    rows.forEach(function (r, i) {
+      var scale = Math.max(0.9, Math.min(1.12, target / nat[i]));
+      r.style.fontSize = (base * scale).toFixed(1) + 'px';
+      r.style.gap = gapPx.toFixed(1) + 'px';
+      r.style.height = H + 'px';
+      r.style.lineHeight = H + 'px';
+    });
+    roll.style.height = H + 'px';
+  }
+  var _fitT;
+  function refit() {
+    clearTimeout(_fitT);
+    _fitT = setTimeout(function () {
+      Array.prototype.slice.call(document.querySelectorAll('.rotator .r-track > span')).forEach(function (r) { r.style.fontSize = ''; r.style.gap = ''; r.style.height = ''; r.style.lineHeight = ''; });
+      var roll = document.querySelector('.rotator .r-roll'); if (roll) roll.style.height = '';
+      fitRotator();
+    }, 200);
+  }
+  window.addEventListener('resize', refit);
+
   if (document.readyState !== 'loading') init();
   else document.addEventListener('DOMContentLoaded', init);
 })();
