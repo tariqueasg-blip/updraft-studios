@@ -869,14 +869,16 @@
     will-change: transform;
   }
   .rotator .r-track > span {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 0.16em;
     height: 1.22em;
     line-height: 1.22em;
     color: var(--blue);
     white-space: nowrap;
-    text-align: center;
   }
-  .rotator .r-track > span i { font-style: normal; color: var(--ink); display: inline-block; margin-right: 0.18em; animation: rollBack 10s cubic-bezier(.6, 0, .3, 1) infinite; will-change: transform; }
+  .rotator .r-track > span i { font-style: normal; color: var(--ink); display: inline-block; margin-right: 0; animation: rollBack 10s cubic-bezier(.6, 0, .3, 1) infinite; will-change: transform; }
   .rotator .r-track > span { text-shadow: 0 8px 40px rgba(43, 127, 224, .16); }
   @keyframes roll {
     0%, 13%   { transform: translateY(0); }
@@ -1284,7 +1286,7 @@
   </div>
 
   <div class="caps" aria-hidden="true">
-    <span>Websites</span><span>Branding</span><span>Growth</span><span>Content</span><span>Talent</span>
+    <span>Websites</span><span>Branding</span><span>Marketing</span><span>Video</span><span>Talent</span>
   </div>
 
   <div class="bridge" aria-hidden="true">
@@ -1305,9 +1307,9 @@
     </span>
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="kicker">Start Here</div>
-        <h2>Where would you like to start?</h2>
-        <p>Pick a path. Each one goes a little deeper, and we take it from there.</p>
+        <div class="kicker">The Studio</div>
+        <h2>Three ways in.</h2>
+        <p>What we do, how we work, and who it's for. Go where it's most useful.</p>
       </div>
       <div class="explore-grid">
         <a class="explore-card reveal" href="services.html">
