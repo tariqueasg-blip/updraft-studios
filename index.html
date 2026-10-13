@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-v="v202610130020">
+<html lang="en" data-v="v202610130023">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -857,6 +857,7 @@
   }
   /* "Get" is its own static element — it never moves */
   .rotator .r-get { color: var(--ink); white-space: nowrap; flex: none; }
+  .rotator .r-get.r-mirror { visibility: hidden; }
   /* a fixed-width window the words flip through (sized to the widest word) */
   .rotator .r-roll {
     position: relative;
@@ -875,7 +876,7 @@
   }
   .rotator .r-track > span {
     display: block;
-    text-align: left;
+    text-align: center;
     height: 1.22em;
     line-height: 1.22em;
     color: var(--blue);
@@ -1277,7 +1278,7 @@
   </header>
 
   <div class="rotator" aria-hidden="true">
-    <span class="r-get">Get</span><span class="r-roll"><span class="r-track"><span>found.</span><span>chosen.</span><span>booked.</span><span>monetized.</span><span>found.</span></span></span>
+    <span class="r-get">Get</span><span class="r-roll"><span class="r-track"><span>found.</span><span>chosen.</span><span>booked.</span><span>monetized.</span><span>found.</span></span></span><span class="r-get r-mirror" aria-hidden="true">Get</span>
   </div>
 
   <div class="caps" aria-hidden="true">
