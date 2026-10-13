@@ -18,8 +18,8 @@ body::after{
   letter-spacing:.22em;font-size:12.5px;font-weight:700;text-transform:uppercase;color:var(--blue);
 }
 /* hairlines flanking quiet labels — uniform width, rounded caps, symmetric where it reads as a heading */
-.eyebrow::before,.kicker::before{content:"" !important;width:26px !important;height:2px !important;border-radius:999px !important;box-shadow:none !important;background:linear-gradient(90deg,rgba(43,127,224,0),var(--blue)) !important;flex:none}
-.eyebrow::after,.kicker::after{content:"" !important;width:26px !important;height:2px !important;border-radius:999px !important;background:linear-gradient(90deg,var(--teal),rgba(63,217,198,0)) !important;flex:none}
+.eyebrow::before,.kicker::before{content:"" !important;width:34px !important;height:2px !important;border-radius:999px !important;box-shadow:none !important;background:linear-gradient(90deg,rgba(43,127,224,0),#2B7FE0 68%,#3FD9C6) !important;flex:none}
+.eyebrow::after,.kicker::after{content:"" !important;width:34px !important;height:2px !important;border-radius:999px !important;background:linear-gradient(270deg,rgba(43,127,224,0),#2B7FE0 68%,#3FD9C6) !important;flex:none}
 /* the animated dot reads like a live-status indicator — remove it site-wide */
 .pulse{display:none !important}
 
@@ -105,8 +105,8 @@ body::after{
 .feature-band .fb-wing{position:absolute;width:560px;right:-140px;top:50%;transform:translateY(-50%) rotate(8deg);opacity:.16;pointer-events:none}
 .feature-band .fb-inner{position:relative;z-index:1;max-width:660px}
 .feature-band .fb-eyebrow{font-family:'Space Grotesk',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.2em;font-size:12.5px;color:#9ecbff;margin-bottom:16px;display:flex;align-items:center;gap:12px}
-.feature-band .fb-eyebrow::before{content:"";width:24px;height:2px;border-radius:999px;background:linear-gradient(90deg,rgba(158,203,255,0),#9ecbff)}
-.feature-band .fb-eyebrow::after{content:"";width:24px;height:2px;border-radius:999px;background:linear-gradient(90deg,#9ecbff,rgba(158,203,255,0))}
+.feature-band .fb-eyebrow::before{content:"";width:30px;height:2px;border-radius:999px;background:linear-gradient(90deg,rgba(158,203,255,0),#9ecbff)}
+.feature-band .fb-eyebrow::after{content:"";width:30px;height:2px;border-radius:999px;background:linear-gradient(270deg,rgba(158,203,255,0),#9ecbff)}
 .feature-band h3{font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(24px,3.5vw,40px);letter-spacing:-.02em;line-height:1.1;margin:0 0 24px;color:#fff}
 .feature-band p{color:rgba(255,255,255,.82);font-size:16.5px;line-height:1.6;margin:0 0 26px;max-width:560px}
 @media (max-width:760px){ .feature-band{padding:40px 26px} .feature-band .fb-wing{width:360px;right:-150px} }
