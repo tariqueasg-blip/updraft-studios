@@ -7,7 +7,7 @@
     var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var io = ('IntersectionObserver' in window)
       ? new IntersectionObserver(function (entries) {
-          entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+          entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); e.target.classList.add('is-visible'); io.unobserve(e.target); } });
         }, { threshold: 0.16, rootMargin: '0px 0px -8% 0px' })
       : null;
 
@@ -41,6 +41,14 @@
 
     document.querySelectorAll('.section-head h2').forEach(function (h2) {
       if (io && !reduce) io.observe(h2); else h2.classList.add('in');
+    });
+
+    /* section blocks / cards reveal on scroll, with a light stagger among siblings */
+    document.querySelectorAll('.reveal').forEach(function (el) {
+      var sibs = (el.parentNode && el.parentNode.querySelectorAll) ? el.parentNode.querySelectorAll(':scope > .reveal') : null;
+      var idx = sibs ? Array.prototype.indexOf.call(sibs, el) : 0;
+      if (idx > 0) el.style.transitionDelay = (Math.min(idx, 5) * 0.08) + 's';
+      if (io && !reduce) io.observe(el); else el.classList.add('in', 'is-visible');
     });
 
     /* safety: nothing may stay hidden (covers missed observers / reduced motion) */

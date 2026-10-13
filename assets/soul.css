@@ -7,7 +7,7 @@
 
 /* fine paper grain over the page (kills the flat template feel) */
 body::after{
-  content:"";position:fixed;inset:0;pointer-events:none;z-index:9998;opacity:.05;mix-blend-mode:multiply;
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:9998;opacity:.045;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
@@ -17,7 +17,9 @@ body::after{
   display:inline-flex !important;align-items:center;gap:14px;
   letter-spacing:.22em;font-size:12.5px;font-weight:700;text-transform:uppercase;color:var(--blue);
 }
-.eyebrow::before{content:"";width:30px;height:1px;background:linear-gradient(90deg,var(--blue),var(--teal));flex:none}
+/* hairlines flanking quiet labels — uniform width, rounded caps, symmetric where it reads as a heading */
+.eyebrow::before,.kicker::before{content:"" !important;width:26px !important;height:2px !important;border-radius:999px !important;box-shadow:none !important;background:linear-gradient(90deg,rgba(43,127,224,0),var(--blue)) !important;flex:none}
+.eyebrow::after,.kicker::after{content:"" !important;width:26px !important;height:2px !important;border-radius:999px !important;background:linear-gradient(90deg,var(--teal),rgba(63,217,198,0)) !important;flex:none}
 /* the animated dot reads like a live-status indicator — remove it site-wide */
 .pulse{display:none !important}
 
@@ -27,10 +29,7 @@ body::after{
   background:none !important;border:0 !important;
   font-size:12px !important;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--navy);
 }
-.kicker::before{
-  content:"" !important;width:28px !important;height:1px !important;border-radius:0 !important;box-shadow:none !important;
-  background:linear-gradient(90deg,var(--blue),var(--teal)) !important;
-}
+/* (kicker/eyebrow hairlines are defined together above — uniform, rounded, symmetric) */
 
 /* a small recurring sparkle mark, used as a decorative accent */
 .spark{display:inline-block;width:.42em;height:.42em;vertical-align:.62em;margin-left:.12em;
@@ -106,7 +105,40 @@ body::after{
 .feature-band .fb-wing{position:absolute;width:560px;right:-140px;top:50%;transform:translateY(-50%) rotate(8deg);opacity:.16;pointer-events:none}
 .feature-band .fb-inner{position:relative;z-index:1;max-width:660px}
 .feature-band .fb-eyebrow{font-family:'Space Grotesk',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.2em;font-size:12.5px;color:#9ecbff;margin-bottom:16px;display:flex;align-items:center;gap:12px}
-.feature-band .fb-eyebrow::before{content:"";width:26px;height:1px;background:#9ecbff;opacity:.8}
+.feature-band .fb-eyebrow::before{content:"";width:24px;height:2px;border-radius:999px;background:linear-gradient(90deg,rgba(158,203,255,0),#9ecbff)}
+.feature-band .fb-eyebrow::after{content:"";width:24px;height:2px;border-radius:999px;background:linear-gradient(90deg,#9ecbff,rgba(158,203,255,0))}
 .feature-band h3{font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(24px,3.5vw,40px);letter-spacing:-.02em;line-height:1.1;margin:0 0 24px;color:#fff}
 .feature-band p{color:rgba(255,255,255,.82);font-size:16.5px;line-height:1.6;margin:0 0 26px;max-width:560px}
 @media (max-width:760px){ .feature-band{padding:40px 26px} .feature-band .fb-wing{width:360px;right:-150px} }
+
+/* ============================================================
+   PERF PASS — kill per-frame compositing (the scroll jank)
+   ============================================================ */
+/* the paper grain was the #1 cost: a fixed full-screen layer with a
+   blend mode forces a repaint of the whole viewport every scroll frame.
+   Keep the texture, drop the blend. */
+.grain{mix-blend-mode:normal !important}
+body::after{mix-blend-mode:normal !important}
+/* animated orbs carried a 50px+ blur — the blur re-rasterizes every frame.
+   Their radial-gradients are already soft, so the blur is pure cost. */
+.hero-orb,.orb{filter:none !important}
+
+/* ============================================================
+   MOTION PASS — tasteful, professional, reduced-motion aware
+   ============================================================ */
+/* scroll-reveal for section blocks / cards */
+.reveal{opacity:0;transform:translateY(22px);
+  transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
+.reveal.in,.reveal.is-visible{opacity:1 !important;transform:none !important}
+/* micro-interactions */
+.btn,.btn-primary,.explore-card,.ec-link,.faq-q,.hub-node{transition:transform .28s cubic-bezier(.22,1,.36,1),box-shadow .28s ease,border-color .28s ease,background .28s ease,color .28s ease}
+.explore-card:hover,.hub-node:hover{transform:translateY(-4px)}
+.btn:hover,.btn-primary:hover{transform:translateY(-2px)}
+.ec-link:hover{transform:translateX(3px)}
+/* link underline slide */
+a{transition:color .25s ease}
+nav a:hover,.nav-links a:hover{letter-spacing:.01em}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1 !important;transform:none !important;transition:none !important}
+  .btn,.btn-primary,.explore-card,.ec-link,.faq-q,.hub-node{transition:none}
+}
