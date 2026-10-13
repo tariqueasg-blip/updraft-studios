@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-v="v202610130016">
+<html lang="en" data-v="v202610130020">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -844,15 +844,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 0.36em;
     padding: 52px 24px 0;
     background: transparent;
-    overflow: hidden;
-    text-align: center;
-  }
-  .rotator .r-roll {
-    position: relative;
-    display: block;
-    height: 1.22em;
     overflow: hidden;
     text-align: center;
     font-family: 'Space Grotesk', 'Sora', sans-serif;
@@ -860,9 +854,19 @@
     font-weight: 700;
     letter-spacing: -0.025em;
     line-height: 1.22;
+  }
+  /* "Get" is its own static element — it never moves */
+  .rotator .r-get { color: var(--ink); white-space: nowrap; flex: none; }
+  /* a fixed-width window the words flip through (sized to the widest word) */
+  .rotator .r-roll {
+    position: relative;
+    display: inline-block;
+    height: 1.22em;
+    overflow: hidden;
+    text-align: left;
+    padding: 0 3px;
     -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 8%, #000 92%, transparent 100%);
     mask-image: linear-gradient(180deg, transparent 0, #000 8%, #000 92%, transparent 100%);
-    padding: 0 3px;
   }
   .rotator .r-track {
     display: block;
@@ -871,28 +875,19 @@
   }
   .rotator .r-track > span {
     display: block;
-    text-align: center;
+    text-align: left;
     height: 1.22em;
     line-height: 1.22em;
     color: var(--blue);
     white-space: nowrap;
+    text-shadow: 0 8px 40px rgba(43, 127, 224, .16);
   }
-  .rotator .r-track > span i { font-style: normal; color: var(--ink); display: inline-block; margin-right: 0.5em; }
-  .rotator .r-track > span { text-shadow: 0 8px 40px rgba(43, 127, 224, .16); }
   @keyframes roll {
     0%, 13%   { transform: translateY(0); }
     22%, 35%  { transform: translateY(-20%); }
     44%, 57%  { transform: translateY(-40%); }
     66%, 79%  { transform: translateY(-60%); }
     88%, 100% { transform: translateY(-80%); }
-  }
-  /* counter-translate the static "Get" so only the following word slides */
-  @keyframes rollBack {
-    0%, 13%   { transform: translateY(0); }
-    22%, 35%  { transform: translateY(100%); }
-    44%, 57%  { transform: translateY(200%); }
-    66%, 79%  { transform: translateY(300%); }
-    88%, 100% { transform: translateY(400%); }
   }
   @media (max-width: 640px) {
     .rotator { padding: 42px 18px 0; }
@@ -1282,7 +1277,7 @@
   </header>
 
   <div class="rotator" aria-hidden="true">
-    <span class="r-roll"><span class="r-track"><span><i>Get</i>found.</span><span><i>Get</i>chosen.</span><span><i>Get</i>booked.</span><span><i>Get</i>monetized.</span><span><i>Get</i>found.</span></span></span>
+    <span class="r-get">Get</span><span class="r-roll"><span class="r-track"><span>found.</span><span>chosen.</span><span>booked.</span><span>monetized.</span><span>found.</span></span></span>
   </div>
 
   <div class="caps" aria-hidden="true">
