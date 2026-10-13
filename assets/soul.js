@@ -70,7 +70,7 @@
     var rows = Array.prototype.slice.call(track.children);
     var cs = getComputedStyle(roll);
     var base = parseFloat(cs.fontSize) || 82;
-    var gapPx = base * 0.24;
+    var gapPx = base * 0.3;
     var cv = document.createElement('canvas').getContext('2d');
     var meas = function (t) { cv.font = cs.fontWeight + ' ' + base + 'px ' + cs.fontFamily; return cv.measureText(t).width; };
     var nat = rows.map(function (r) {
@@ -86,10 +86,11 @@
     rows.forEach(function (r, i) {
       var scale = Math.max(0.9, Math.min(1.12, target / nat[i]));
       r.style.fontSize = (base * scale).toFixed(1) + 'px';
-      r.style.gap = gapPx.toFixed(1) + 'px';
       r.style.height = H + 'px';
       r.style.lineHeight = H + 'px';
+      var gi = r.querySelector('i'); if (gi) gi.style.marginRight = gapPx.toFixed(1) + 'px';
     });
+    if (roll.children[0]) {} // noop
     roll.style.height = H + 'px';
   }
   var _fitT;
