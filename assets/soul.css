@@ -181,9 +181,11 @@ nav a:hover,.nav-links a:hover{letter-spacing:.01em}
 }
 
 /* decorative bleed (orbs, arcs, watermark wings) was pushing the document
-   wider than the viewport, so phones could drift sideways. Clip at the root
-   and the layout stays exactly as wide as the screen. */
-html{overflow-x:clip}
+   wider than the viewport, so phones could drift sideways.
+   NB: overflow / overflow-x on the ROOT element turns off document
+   scrolling — that shipped once and locked the homepage. Clip on the
+   bleeding containers instead; it paints identical and scrolls fine. */
+section, footer{overflow:clip}
 
 @media (max-width: 760px){
   /* half-visible corner watermarks read as a smudge at phone width.
