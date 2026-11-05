@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-v="v202610130042">
+<html lang="en" data-v="v202611051245">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
-<script src="assets/soul.js?v=5" defer></script>
+<script src="assets/soul.js?v=6" defer></script>
 <style>
   :root {
     --navy-deep: #0F1A45;
@@ -246,11 +246,11 @@
     animation-delay: var(--d, 0s);
     will-change: transform, opacity;
   }
+  /* solid ink beats gradient text. The background-clip gradient is the
+     loudest "AI startup template" tell on the page; the brand colour
+     carries the same emphasis without the template smell. */
   .hero h1 .hl-word.accent {
-    background: linear-gradient(100deg, var(--blue), var(--teal));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: var(--blue);
   }
   @keyframes wordIn {
     0% { opacity: 0; transform: translateY(40px) scale(0.92); }
@@ -295,11 +295,11 @@
     transition: transform 0.28s cubic-bezier(0.34, 1.45, 0.64, 1), box-shadow 0.28s ease, background 0.28s ease, border-color 0.28s ease;
   }
   .btn-primary {
-    background: linear-gradient(135deg, var(--navy-deep), var(--blue));
+    background: var(--navy-deep);
     color: #fff;
-    box-shadow: 0 8px 24px rgba(15,26,69,0.25);
+    box-shadow: 0 6px 18px rgba(15,26,69,0.18);
   }
-  .btn-primary:hover { transform: scale(1.06); box-shadow: 0 14px 34px rgba(15,26,69,0.36); }
+  .btn-primary:hover { background: var(--blue); transform: translateY(-1px); box-shadow: 0 10px 26px rgba(43,127,224,0.28); }
   .btn-ghost {
     background: transparent;
     color: var(--navy);
@@ -1099,28 +1099,38 @@
   }
 
   @media (max-width: 760px) {
+    /* the hero carried 24px on the section AND 24px on the inner content,
+       so text sat in a ~294px column on a 390px phone. One gutter only. */
+    .hero { padding: 116px 0 0; }
+    .hero-content { padding: 0 22px; }
+    .hero-showcase { margin-top: 40px; padding: 0 22px 48px; }
+
     .wing-hub {
       height: auto;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 22px;
-      padding: 8px 0 12px;
+      gap: 24px;
+      padding: 0;
     }
     .wing-stems { display: none; }
     .bm-wing-wrap {
       position: static;
       transform: none;
       animation: none;
-      width: clamp(180px, 52vw, 240px);
+      width: clamp(166px, 44vw, 210px);
     }
     .bm-glow { display: none; }
+
+    /* five pills in a free wrap left a ragged last line. A 2-col grid gives
+       every card the same shape and lets the odd one out take a full row. */
     .hub-nodes {
       position: static;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 9px;
+      width: 100%;
+      max-width: 400px;
       pointer-events: auto;
     }
     .hub-node {
@@ -1128,7 +1138,16 @@
       transform: none;
       opacity: 1;
       animation: none;
+      justify-content: flex-start;
+      white-space: normal;
+      padding: 11px 13px;
+      border-radius: 14px;
+      font-size: 12.5px;
+      line-height: 1.25;
+      min-height: 48px;
+      text-align: left;
     }
+    .hub-node.n5 { grid-column: 1 / -1; justify-content: center; }
   }
   @media (prefers-reduced-motion: reduce) {
     .bm-wing-wrap, .bm-wing, .bm-sheen, .bm-sheen::before, .bm-glow, .hub-node, .wing-stems { animation: none; }
@@ -1191,7 +1210,7 @@
   footer .wing-mark{width:440px;left:-150px;bottom:-160px;opacity:.05;transform:rotate(-6deg)}
   @media (max-width:760px){ #positioning .wing-mark{width:340px;right:-140px} footer .wing-mark{width:300px;left:-120px} }
 </style>
-<link rel="stylesheet" href="assets/soul.css?v=7">
+<link rel="stylesheet" href="assets/soul.css?v=9">
 <script data-cache-fresh>(function(){try{fetch("/version.txt?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(v){v=(v||"").trim();var c=document.documentElement.getAttribute("data-v");if(c&&v&&v!==c){location.replace(location.pathname+"?v="+encodeURIComponent(v))}}).catch(function(){})}catch(e){}})();</script>
 </head>
 <body>
@@ -1229,7 +1248,7 @@
     <div class="hero-orb hero-orb-1"></div>
     <div class="hero-orb hero-orb-2"></div>
     <div class="hero-content">
-      <span class="eyebrow block" data-blk="eyebrow"><span class="pulse"></span>Digital Marketing &amp; Talent Studio</span>
+      <span class="eyebrow block" data-blk="eyebrow"><span class="pulse"></span>Brand, Growth &amp; Representation</span>
       <h1 class="block" data-blk="heroH1"><span class="hl-word" style="--d:.22s">Wings</span> <span class="hl-word" style="--d:.33s">for</span><br><span class="hl-word accent" style="--d:.44s">your</span> <span class="hl-word accent" style="--d:.55s">brand.</span></h1>
       <p class="lede block" data-blk="lede">Updraft Studios builds the systems that carry brands, businesses, and talent higher with design, growth, and representation under one roof.</p>
       <div class="hero-ctas block" data-blk="heroCtas">

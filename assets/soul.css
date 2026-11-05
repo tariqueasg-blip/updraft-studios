@@ -142,3 +142,61 @@ nav a:hover,.nav-links a:hover{letter-spacing:.01em}
   .reveal{opacity:1 !important;transform:none !important;transition:none !important}
   .btn,.btn-primary,.explore-card,.ec-link,.faq-q,.hub-node{transition:none}
 }
+/* ============================================================
+   MOBILE REFINEMENT PASS
+   The eyebrow labels are flex rows with a hairline on each side. When
+   the label wrapped to two lines the hairlines stayed vertically
+   centred, which opened a big gap and made the row read as broken.
+   Labels never wrap now; they shrink instead.
+   ============================================================ */
+@media (max-width: 640px){
+  .eyebrow, .kicker{
+    white-space:nowrap !important;
+    font-size:11px !important;
+    letter-spacing:.14em !important;
+    gap:10px !important;
+  }
+  .eyebrow::before, .eyebrow::after,
+  .kicker::before, .kicker::after{ width:15px !important; }
+}
+
+/* capability chips: soul.css used to strip them to bare text, which left a
+   ragged wrap of orphan words. A quiet hairline pill reads intentional and
+   keeps every token the same visual weight. */
+.chip{
+  background:#fff !important;
+  border:1px solid var(--line, rgba(20,22,30,.08)) !important;
+  border-radius:999px !important;
+  padding:7px 14px !important;
+  font-size:12.5px !important;
+  font-weight:500 !important;
+  color:var(--navy, #1B2A6B) !important;
+  line-height:1.2 !important;
+  letter-spacing:0 !important;
+}
+.chip i{ display:none !important; }
+.chips{ gap:8px !important; }
+@media (max-width: 560px){
+  .chips{ justify-content:center !important; }
+}
+
+/* decorative bleed (orbs, arcs, watermark wings) was pushing the document
+   wider than the viewport, so phones could drift sideways. Clip at the root
+   and the layout stays exactly as wide as the screen. */
+html{overflow-x:clip}
+
+@media (max-width: 760px){
+  /* half-visible corner watermarks read as a smudge at phone width.
+     Centre them behind the copy instead, smaller and quieter. */
+  .wing-mark.wm-right, .wing-mark.wm-left{
+    left:50% !important; right:auto !important; bottom:auto !important;
+    top:50% !important; transform:translate(-50%,-50%) !important;
+    width:min(300px,78vw) !important; opacity:.045 !important;
+  }
+}
+
+/* section headings: the animated underline was landing a few pixels off
+   centre because it was measured against a text node that wraps. Anchor
+   it to the block instead so it is always dead centre. */
+.section-head h2::after{ left:50%; }
+

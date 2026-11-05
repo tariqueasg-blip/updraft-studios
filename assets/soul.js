@@ -29,7 +29,19 @@
             });
             node.replaceChild(frag, n);
           } else if (n.nodeType === 1 && !/^(BR|IMG|SVG|WBR)$/i.test(n.tagName)) {
-            walk(n);
+            /* Never split a gradient-text element into child spans: with
+               background-clip:text the paint is clipped to the element's own
+               box, so a nested inline-block child renders as invisible text
+               (this is what ate the word "lifts." on the partner page).
+               Fade the element itself instead. */
+            if (n.matches('.accent, .hl, .hl-word, .gradient-text, [data-gradient]')) {
+              if (!n.classList.contains('uw')) {
+                n.classList.add('uw');
+                n.style.transitionDelay = (Math.min(i++, 16) * 0.04) + 's';
+              }
+            } else {
+              walk(n);
+            }
           }
         });
       })(h);
